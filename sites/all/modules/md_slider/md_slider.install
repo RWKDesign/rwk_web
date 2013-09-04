@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file - Install file
+ */
+
+
+
+/**
+ * Implements hook_update_N()
+ */
+function md_slider_update_7200() {
+  $sliders = MDSlider::get_all();
+
+  foreach ($sliders as $slider) {
+    $slider->machine_name = str_replace('_', '-', $slider->machine_name);
+    $slider->save();
+  }
+}
